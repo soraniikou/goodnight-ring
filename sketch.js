@@ -6,9 +6,6 @@ let showGoodnight = false;
 let goodnightAlpha = 0;
 let activeMessageAlpha = 255;
 
-let myVoice; 
-let voiceCount = 0; // 再生回数を数える変数
-
 let messages = [
   "Thumb: You've already done enough today",
   "Index: Tomorrow's worries can wait until tomorrow",
@@ -17,17 +14,9 @@ let messages = [
   "Pinky: May a small happiness find you tomorrow"
 ];
 
-function preload() {
-  // 音声ファイルの読み込み
-  myVoice = loadSound('voice.m4a'); 
-}
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   textAlign(CENTER, CENTER);
-  
-  // スマホの音ズレ対策：オーディオコンテキストを明示的に作成
-  getAudioContext().suspend();
 
   for (let i = 0; i < 5; i++) {
     rings.push({
@@ -120,11 +109,6 @@ function draw() {
 }
 
 function mousePressed() {
-  // 【重要】スマホ対策：タップの瞬間にオーディオを有効化
-  userStartAudio().then(() => {
-    console.log("Audio ready");
-  });
-
   if (showGoodnight) return;
 
   for (let r of rings) {
@@ -134,31 +118,12 @@ function mousePressed() {
       rings.forEach(ring => ring.active = false);
       r.active = !alreadyActive;
 
-      // ★タップした瞬間に音声を2回再生する処理を開始
-      if (r.active && myVoice.isLoaded()) {
-        voiceCount = 0;
-        playVoiceTwice();
-      }
-
       messageTimer = 0;
       activeMessageAlpha = 255;
     }
   }
 }
 
-// 音声を2回繰り返すための関数
-function playVoiceTwice() {
-  if (voiceCount < 2) {
-    myVoice.play();
-    voiceCount++;
-    // 1回目が終わったら、少し間を空けて自分自身をもう一度呼ぶ
-    myVoice.onended(() => {
-      setTimeout(playVoiceTwice, 500); // 0.5秒あけて2回目
-    });
-  }
-}
-
-// (ParticleクラスとdrawBackgroundStarsは変更なしのため省略して貼り付けてOKです)
 class Particle {
   constructor(x, y) {
     this.x = x + random(-15, 15);
