@@ -37,9 +37,9 @@ function draw() {
   drawBackgroundStars();
 
   push();
-  fill(135, 206, 250);
-  drawingContext.shadowBlur = 15;
-  drawingContext.shadowColor = 'rgba(135, 206, 250, 0.8)';
+  fill(55, 75, 105);
+  drawingContext.shadowBlur = 8;
+  drawingContext.shadowColor = 'rgba(55, 75, 105, 0.4)';
   textStyle(BOLD);
   textSize(28);
   text("Which finger gets the ring?", width / 2, 80);
