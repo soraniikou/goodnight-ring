@@ -37,7 +37,8 @@ export function RingHero() {
     <>
       <Starfield />
 
-      <h1>Which finger gets the ring?</h1>
+      <h1><h1>Goodnight, Little Fingers</h1>
+      <p className="subtitle">Tap a finger and see what it says</p></h1>
 
       <div className="hand">
         {FINGER_SIGNS.map((sign) => (
