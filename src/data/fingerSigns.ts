@@ -29,7 +29,7 @@ export const FINGER_SIGNS: FingerSign[] = [
   {
     id: "middle",
     label: "Middle",
-    emoji: "💗",
+    emoji: "🫶",
     word: "I like it",
     desc: "Inspired by a gesture meaning fondness — thumb and index finger drawn from the chin downward as they close.",
     audio: "/audio/suki.mp3",
