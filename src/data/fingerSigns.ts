@@ -37,7 +37,7 @@ export const FINGER_SIGNS: FingerSign[] = [
   {
     id: "ring",
     label: "Ring",
-    emoji: "🎉",
+    emoji: "👌",
     word: "Congratulations",
     desc: "Inspired by a gesture meaning celebration — both hands cupped near the chest, opening upward like a flower blooming.",
     audio: "/audio/omedetou.mp3",
@@ -45,7 +45,7 @@ export const FINGER_SIGNS: FingerSign[] = [
   {
     id: "pinky",
     label: "Pinky",
-    emoji: "🤝",
+    emoji:"🙌",
     word: "Friend",
     desc: "Inspired by a gesture meaning connection — the fingers of both hands curled and linked firmly together.",
     audio: "/audio/tomodachi.mp3",
