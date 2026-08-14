@@ -200,3 +200,21 @@ footer a {
     transition: none;
   }
 }
+.stars {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 8px 0 24px;
+}
+
+.star {
+  opacity: 0.25;
+  filter: grayscale(1);
+  transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
+}
+
+.star.found {
+  opacity: 1;
+  filter: none;
+  transform: scale(1.15);
+}
