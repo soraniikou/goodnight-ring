@@ -8,6 +8,7 @@ import { Starfield } from "./Starfield";
 export function RingHero() {
   const [activeId, setActiveId] = useState<FingerId | null>(null);
   const [panelVisible, setPanelVisible] = useState(false);
+  const [discoveredIds, setDiscoveredIds] = useState<Set<FingerId>>(new Set());
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const activeSign = activeId
@@ -17,6 +18,7 @@ export function RingHero() {
   const handleSelect = useCallback((id: FingerId) => {
     setActiveId(id);
     setPanelVisible(false);
+    setDiscoveredIds((prev) => new Set(prev).add(id));
     requestAnimationFrame(() => {
       setPanelVisible(true);
     });
@@ -37,9 +39,18 @@ export function RingHero() {
     <>
       <Starfield />
 
-      <h1><h1>Goodnight, Little Fingers</h1>
-      <p className="subtitle">Tap a finger and see what it says</p></h1>
-
+      <h1>Goodnight, Little Fingers</h1>
+      <p className="subtitle">Tap a finger and see what it says</
+      <div className="stars">
+      {FINGER_SIGNS.map((sign) => (
+        <span
+          key={sign.id}
+          className={`star${discoveredIds.has(sign.id) ? " found" : ""}`}
+        >
+          ⭐
+        </span>
+      ))}
+    </div>
       <div className="hand">
         {FINGER_SIGNS.map((sign) => (
           <FingerRing
