@@ -52,14 +52,11 @@ export function RingHero() {
 
       <SignPanel sign={activeSign} visible={panelVisible} onPlay={handlePlay} />
 
+      
       <footer>
-        Inspired by sign language gestures, not a substitute for learning JSL or
-        ASL.
-        <br />
-        Learn more at{" "}
-        <a href="https://www.jfd.or.jp/" target="_blank" rel="noopener noreferrer">
-          Japanese Federation of the Deaf
-        </a>
+  Inspired by the idea of hand gestures — not a real sign language, and not a
+  substitute for learning JSL or ASL.
+
       </footer>
     </>
   );
