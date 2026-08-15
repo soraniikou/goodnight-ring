@@ -75,10 +75,6 @@ export function RingHero() {
         </>
       )}
 
-      <footer>
-        Inspired by the idea of hand gestures — not a real sign language, and not a
-        substitute for learning JSL or ASL.
-      </footer>
     </>
   );
 }
