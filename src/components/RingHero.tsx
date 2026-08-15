@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { FINGER_SIGNS } from "../data/fingerSigns";
 import type { FingerId } from "../data/fingerSigns";
 import { FingerRing } from "./FingerRing";
@@ -10,7 +10,6 @@ export function RingHero() {
   const [activeId, setActiveId] = useState<FingerId | null>(null);
   const [panelVisible, setPanelVisible] = useState(false);
   const [discoveredIds, setDiscoveredIds] = useState<Set<FingerId>>(new Set());
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const activeSign = activeId
     ? FINGER_SIGNS.find((sign) => sign.id === activeId) ?? null
@@ -26,17 +25,6 @@ export function RingHero() {
       setPanelVisible(true);
     });
   }, []);
-
-  const handlePlay = useCallback(() => {
-    if (!activeSign) return;
-
-    const player = audioRef.current ?? new Audio();
-    audioRef.current = player;
-    player.src = activeSign.audio;
-    player.play().catch(() => {
-      window.alert(`Audio file not found: ${activeSign.audio}`);
-    });
-  }, [activeSign]);
 
   return (
     <>
@@ -71,10 +59,14 @@ export function RingHero() {
             ))}
           </div>
 
-          <SignPanel sign={activeSign} visible={panelVisible} onPlay={handlePlay} />
+          <SignPanel sign={activeSign} visible={panelVisible} />
         </>
       )}
 
+      <footer>
+        Inspired by the idea of hand gestures — not a real sign language, and
+        not a substitute for learning JSL or ASL.
+      </footer>
     </>
   );
 }
