@@ -33,8 +33,9 @@ export function CompletionScreen({ onReset }: CompletionScreenProps) {
       </p>
 
       <p className="completion-cta">
-        Curious? Search "Japanese Sign Language basics" to see the real
-        thing.
+        Curious? Search "
+        <span className="highlight">Japanese Sign Language basics</span>" to
+        see the real thing.
       </p>
     </div>
   );
