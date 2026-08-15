@@ -43,7 +43,7 @@ export function RingHero() {
       <Starfield />
 
       {allFound ? (
-        <CompletionScreen />
+        <CompletionScreen onReset={() => setDiscoveredIds(new Set())} />
       ) : (
         <>
           <h1>Goodnight, Little Fingers</h1>
